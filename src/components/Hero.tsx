@@ -86,7 +86,7 @@ export default function Hero() {
 
             {/* Subheadline */}
             <p className="text-title text-text-secondary mb-12 max-w-2xl text-balance animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              Your one stop shop for all your home decor needs
+              One stop shop for all your <br /> home decor needs.
             </p>
 
             {/* CTA Buttons */}
@@ -133,9 +133,21 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Hero image/visual */}
+        {/* Mobile background image */}
+        <div className="lg:hidden absolute inset-0 opacity-20">
+          <Image
+            src="/hero-showcase.jpg"
+            alt="Premium home decor showcase"
+            fill
+            className="object-cover object-center"
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+            priority
+          />
+        </div>
+
+        {/* Desktop layout */}
         <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full">
-          <div className="relative h-full w-full">
             {/* Main product showcase */}
             <div className="absolute right-20 top-1/2 -translate-y-1/2 w-80 h-96 card-elevated overflow-hidden animate-fade-in" style={{ animationDelay: '0.8s' }}>
               <Image
@@ -148,7 +160,7 @@ export default function Hero() {
               />
             </div>
 
-            {/* Dynamic floating service cards */}
+            {/* Dynamic floating service cards - Desktop only */}
             {serviceCards.map((card, index) => {
               const isVisible = index === currentCardIndex || index === (currentCardIndex + 1) % serviceCards.length
               const position = index === currentCardIndex ? 'top-20 right-12' : 'bottom-32 right-0'
@@ -179,7 +191,7 @@ export default function Hero() {
               )
             })}
 
-            {/* Card indicators */}
+            {/* Card indicators - Desktop only */}
             <div className="absolute bottom-16 right-8 flex space-x-2">
               {serviceCards.map((_, index) => (
                 <div
@@ -197,7 +209,6 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
