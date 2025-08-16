@@ -37,118 +37,232 @@ const products = [
     gradient: 'from-accent-green to-accent-teal'
   },
   {
-    id: 'modular-kitchens',
-    title: 'Modular Kitchens',
-    description: 'Custom-designed modular kitchen solutions that maximize space and functionality.',
-    image: '/products/modular-kitchens.jpg',
-    features: ['Custom Design', 'Space Optimization', 'Premium Hardware', 'Easy Maintenance'],
+    id: 'pvc-ceiling',
+    title: 'PVC Ceiling',
+    description: 'Elegant, moisture-resistant PVC ceiling panels perfect for bathrooms, kitchens, and living spaces.',
+    image: '/products/pvc-ceiling.jpg',
+    features: ['Moisture Resistant', 'Easy Installation', 'Elegant Finish', 'Cost Effective'],
     gradient: 'from-accent-orange to-accent-orange'
-  },
-  {
-    id: 'window-sections',
-    title: 'Window Sections',
-    description: 'High-quality window profiles and accessories for perfect window installations.',
-    image: '/products/window-sections.jpg',
-    features: ['Premium Quality', 'Perfect Fit', 'Weather Sealed', 'Professional Grade'],
-    gradient: 'from-apple-blue-600 to-accent-purple'
   }
 ]
 
 export default function Products() {
   return (
-    <section className="py-24 bg-surface-secondary/30">
-      <div className="content-max-width px-6 sm:px-8 lg:px-12">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-caption text-apple-blue-600 font-semibold mb-3 tracking-wide uppercase">Our Products</h2>
-          <h3 className="text-display-medium text-text-primary mb-6 max-w-4xl mx-auto text-balance">
-            Premium Solutions for
-            <span className="bg-gradient-to-r from-secondary-gold to-accent-orange bg-clip-text text-transparent"> Every Space</span>
-          </h3>
-          <p className="text-body text-text-secondary max-w-3xl mx-auto">
+    <section className="py-24 bg-gradient-to-b from-surface-secondary/30 to-surface-primary relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-10 right-10 w-96 h-96 bg-gradient-to-br from-apple-blue-500/5 to-accent-purple/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-10 w-72 h-72 bg-gradient-to-br from-secondary-gold/5 to-accent-orange/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="content-max-width px-6 sm:px-8 lg:px-12 relative z-10">
+        {/* Enhanced Header */}
+        <div className="text-center mb-20 animate-fade-in">
+          <p className="text-caption text-apple-blue-600 font-semibold mb-4 tracking-wide">PREMIUM COLLECTION</p>
+          <h2 className="text-display text-text-primary mb-6 max-w-4xl mx-auto">
+            Transform Your Space with 
+            <span className="bg-gradient-to-r from-secondary-gold to-accent-orange bg-clip-text text-transparent"> Premium Solutions</span>
+          </h2>
+          <p className="text-body text-text-secondary max-w-3xl mx-auto leading-relaxed">
             Discover our comprehensive range of premium home decor solutions, all backed by Polywood's 
-            quality guarantee and our expert installation services.
+            quality guarantee and expert installation services.
           </p>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {products.map((product, index) => (
-            <div
-              key={product.id}
-              className="card-hover group overflow-hidden animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Product Image */}
-              <div className="relative aspect-[4/3] overflow-hidden rounded-t-apple-lg bg-surface-secondary">
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                />
-                {/* Gradient overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${product.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}></div>
-              </div>
-
-              {/* Product Content */}
-              <div className="p-6 bg-surface-primary">
-                <div className="flex items-start justify-between mb-3">
-                  <h4 className="text-title text-text-primary group-hover:text-apple-blue-600 transition-colors duration-200">
-                    {product.title}
-                  </h4>
-                  <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${product.gradient} flex-shrink-0 mt-1`}></div>
+        {/* Enhanced Products Grid - 3+2 Layout */}
+        <div className="mb-20">
+          {/* First Row - 3 Products */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+            {products.slice(0, 3).map((product, index) => (
+              <div
+                key={product.id}
+                className="group relative bg-surface-primary rounded-2xl overflow-hidden card-elevated hover-lift transition-all duration-500 animate-fade-in"
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                {/* Product Image */}
+                <div className="relative h-64 overflow-hidden">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${product.gradient} opacity-10`}></div>
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                  />
+                  
+                  {/* Gradient overlay on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                  
+                  {/* Floating icon */}
+                  <div className="absolute top-4 right-4 w-10 h-10 bg-surface-primary/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                    <svg className="w-5 h-5 text-apple-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                  </div>
                 </div>
-                
-                <p className="text-body text-text-secondary mb-6 leading-relaxed">
-                  {product.description}
-                </p>
 
-                {/* Features */}
-                <div className="space-y-3 mb-6">
-                  {product.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center text-footnote text-text-secondary">
-                      <div className="w-1.5 h-1.5 bg-accent-green rounded-full mr-3 flex-shrink-0"></div>
-                      {feature}
+                {/* Product Content */}
+                <div className="p-6 space-y-4">
+                  {/* Title and Description */}
+                  <div className="space-y-3">
+                    <h3 className="text-title font-semibold text-text-primary group-hover:text-apple-blue-600 transition-colors">
+                      {product.title}
+                    </h3>
+                    <p className="text-footnote text-text-secondary leading-relaxed">
+                      {product.description}
+                    </p>
+                  </div>
+
+                  {/* Features */}
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-caption font-semibold text-text-tertiary tracking-wide">FEATURES</span>
+                      <div className={`w-8 h-1 bg-gradient-to-r ${product.gradient} rounded-full`}></div>
                     </div>
-                  ))}
-                </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      {product.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-center space-x-2">
+                          <div className="w-1.5 h-1.5 bg-accent-green rounded-full"></div>
+                          <span className="text-footnote text-text-secondary">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-                {/* CTA Button */}
-                <Link
-                  href={`/products#${product.id}`}
-                  className="btn-outline w-full text-center group/btn hover-lift"
-                >
-                  <span>Learn More</span>
-                  <svg className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
+                  {/* Action Button */}
+                  <div className="pt-2">
+                    <Link
+                      href="/products"
+                      className="inline-flex items-center text-footnote font-semibold text-apple-blue-600 hover:text-apple-blue-700 transition-colors group/link"
+                    >
+                      Learn More
+                      <svg className="ml-2 w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
               </div>
+            ))}
+          </div>
+
+          {/* Second Row - 2 Products Centered */}
+          <div className="flex justify-center">
+            <div className="grid md:grid-cols-2 gap-8 max-w-2xl">
+              {products.slice(3, 5).map((product, index) => (
+                <div
+                  key={product.id}
+                  className="group relative bg-surface-primary rounded-2xl overflow-hidden card-elevated hover-lift transition-all duration-500 animate-fade-in"
+                  style={{ animationDelay: `${(index + 3) * 0.15}s` }}
+                >
+                  {/* Product Image */}
+                  <div className="relative h-64 overflow-hidden">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${product.gradient} opacity-10`}></div>
+                    <Image
+                      src={product.image}
+                      alt={product.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                    />
+                    
+                    {/* Gradient overlay on hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                    
+                    {/* Floating icon */}
+                    <div className="absolute top-4 right-4 w-10 h-10 bg-surface-primary/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                      <svg className="w-5 h-5 text-apple-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Product Content */}
+                  <div className="p-6 space-y-4">
+                    {/* Title and Description */}
+                    <div className="space-y-3">
+                      <h3 className="text-title font-semibold text-text-primary group-hover:text-apple-blue-600 transition-colors">
+                        {product.title}
+                      </h3>
+                      <p className="text-footnote text-text-secondary leading-relaxed">
+                        {product.description}
+                      </p>
+                    </div>
+
+                    {/* Features */}
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-caption font-semibold text-text-tertiary tracking-wide">FEATURES</span>
+                        <div className={`w-8 h-1 bg-gradient-to-r ${product.gradient} rounded-full`}></div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
+                        {product.features.map((feature, featureIndex) => (
+                          <div key={featureIndex} className="flex items-center space-x-2">
+                            <div className="w-1.5 h-1.5 bg-accent-green rounded-full"></div>
+                            <span className="text-footnote text-text-secondary">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Action Button */}
+                    <div className="pt-2">
+                      <Link
+                        href="/products"
+                        className="inline-flex items-center text-footnote font-semibold text-apple-blue-600 hover:text-apple-blue-700 transition-colors group/link"
+                      >
+                        Learn More
+                        <svg className="ml-2 w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* Bottom CTA */}
+        {/* Enhanced CTA Section */}
         <div className="text-center">
-          <div className="card-elevated p-12 bg-gradient-to-br from-surface-primary via-surface-secondary/50 to-surface-primary">
-            <h4 className="text-title-large text-text-primary mb-4">Ready to Transform Your Space?</h4>
-            <p className="text-body text-text-secondary mb-8 max-w-2xl mx-auto">
-              Get professional installation for all our premium products. 
-              Let's bring your vision to life.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="btn-primary hover-lift"
-              >
-                Get Free Quote
-                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+          <div className="relative max-w-4xl mx-auto">
+            {/* Background card */}
+            <div className="card-elevated p-12 bg-gradient-to-br from-surface-primary via-surface-secondary/30 to-surface-primary relative overflow-hidden">
+              {/* Background patterns */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-secondary-gold/10 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-br from-apple-blue-500/10 to-transparent rounded-full translate-y-12 -translate-x-12"></div>
+              
+              <div className="relative z-10 space-y-8">
+                <div className="space-y-4">
+                  <h4 className="text-title-large text-text-primary">Ready to Transform Your Space?</h4>
+                  <p className="text-body text-text-secondary max-w-2xl mx-auto">
+                    Get professional installation for all our premium products. 
+                    Let's bring your vision to life with expert craftsmanship.
+                  </p>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <Link
+                    href="/contact"
+                    className="btn-primary hover-lift group"
+                  >
+                    Get Free Quote
+                    <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                  
+                  <div className="flex items-center space-x-2 text-footnote text-text-secondary">
+                    <div className="w-2 h-2 bg-accent-green rounded-full animate-pulse"></div>
+                    <span>Free consultation</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
