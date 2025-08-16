@@ -170,21 +170,6 @@ export default function Testimonials() {
             ))}
           </div>
         </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="bg-primary-navy rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-serif font-semibold mb-4">
-              Join Our Happy Customers
-            </h3>
-            <p className="text-lg mb-6 opacity-90">
-              Experience the RAMA G DECOR difference for yourself. Get your free consultation today!
-            </p>
-            <button className="px-8 py-3 bg-secondary-gold text-primary-navy font-semibold rounded-lg hover:bg-secondary-bronze transition-colors">
-              Get Free Consultation
-            </button>
-          </div>
-        </div>
       </div>
     </section>
   )

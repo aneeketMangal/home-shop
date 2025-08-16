@@ -221,6 +221,18 @@
     animation: float 6s ease-in-out infinite;
   }
   
+  .animate-card-enter {
+    animation: cardEnter 1s ease-out forwards;
+  }
+  
+  .animate-card-exit {
+    animation: cardExit 0.8s ease-in forwards;
+  }
+  
+  .animate-service-card {
+    animation: serviceCardFloat 4s ease-in-out infinite;
+  }
+  
   /* Text utilities */
   .text-balance {
     text-wrap: balance;
@@ -286,6 +298,43 @@
   }
   50% {
     transform: translateY(-20px);
+  }
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cardExit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+}
+
+@keyframes serviceCardFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-12px) rotate(-1deg);
   }
 }
 

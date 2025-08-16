@@ -136,7 +136,7 @@ export default function Products() {
           <div className="card-elevated p-12 bg-gradient-to-br from-surface-primary via-surface-secondary/50 to-surface-primary">
             <h4 className="text-title-large text-text-primary mb-4">Ready to Transform Your Space?</h4>
             <p className="text-body text-text-secondary mb-8 max-w-2xl mx-auto">
-              Get expert consultation and professional installation for all our premium products. 
+              Get professional installation for all our premium products. 
               Let's bring your vision to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -148,12 +148,6 @@ export default function Products() {
                 <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </Link>
-              <Link
-                href="/services"
-                className="btn-outline hover-lift"
-              >
-                Our Services
               </Link>
             </div>
           </div>

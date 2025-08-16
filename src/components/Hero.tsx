@@ -1,9 +1,58 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Hero() {
+  const [currentCardIndex, setCurrentCardIndex] = useState(0)
+  
+  const serviceCards = [
+    {
+      title: 'SPC Flooring',
+      subtitle: 'Premium Quality',
+      gradient: 'from-secondary-gold to-accent-orange',
+      delay: '1s'
+    },
+    {
+      title: 'uPVC Windows',
+      subtitle: 'Energy Efficient',
+      gradient: 'from-apple-blue-600 to-apple-blue-700',
+      delay: '1.2s'
+    },
+    {
+      title: 'Fluted Panels',
+      subtitle: 'Modern Design',
+      gradient: 'from-accent-purple to-primary-navy',
+      delay: '1.4s'
+    },
+    {
+      title: 'PVC Doors',
+      subtitle: 'Durable & Stylish',
+      gradient: 'from-secondary-bronze to-accent-orange',
+      delay: '1.6s'
+    },
+    {
+      title: 'Modular Kitchens',
+      subtitle: 'Custom Solutions',
+      gradient: 'from-accent-green to-secondary-gold',
+      delay: '1.8s'
+    },
+    {
+      title: 'Professional Installation',
+      subtitle: 'Expert Service',
+      gradient: 'from-apple-blue-600 to-accent-purple',
+      delay: '2s'
+    }
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCardIndex((prev) => (prev + 1) % serviceCards.length)
+    }, 3000) // Change card every 3 seconds
+
+    return () => clearInterval(interval)
+  }, [serviceCards.length])
   return (
     <section className="relative min-h-screen bg-surface-primary overflow-hidden">
       {/* Background with subtle gradient */}
@@ -99,25 +148,52 @@ export default function Hero() {
               />
             </div>
 
-            {/* Floating product cards */}
-            <div className="absolute right-12 top-20 w-48 h-32 card bg-surface-primary/90 backdrop-blur-sm p-4 animate-float" style={{ animationDelay: '1s' }}>
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-secondary-gold to-accent-orange rounded-apple-sm"></div>
-                <div>
-                  <h3 className="text-footnote font-semibold text-text-primary">SPC Flooring</h3>
-                  <p className="text-footnote text-text-secondary">Premium Quality</p>
+            {/* Dynamic floating service cards */}
+            {serviceCards.map((card, index) => {
+              const isVisible = index === currentCardIndex || index === (currentCardIndex + 1) % serviceCards.length
+              const position = index === currentCardIndex ? 'top-20 right-12' : 'bottom-32 right-0'
+              const size = index === currentCardIndex ? 'w-48 h-32' : 'w-52 h-36'
+              
+              return (
+                <div
+                  key={card.title}
+                  className={`absolute ${position} ${size} card bg-surface-primary/90 backdrop-blur-sm p-4 transition-all duration-1000 ease-in-out ${
+                    isVisible 
+                      ? 'opacity-100 scale-100 animate-service-card' 
+                      : 'opacity-0 scale-95 pointer-events-none'
+                  }`}
+                  style={{ 
+                    animationDelay: card.delay,
+                    transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                    transitionDelay: isVisible ? '0ms' : '200ms'
+                  }}
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className={`w-12 h-12 bg-gradient-to-br ${card.gradient} rounded-apple-sm transition-all duration-500`}></div>
+                    <div>
+                      <h3 className="text-footnote font-semibold text-text-primary transition-all duration-300">{card.title}</h3>
+                      <p className="text-footnote text-text-secondary transition-all duration-300">{card.subtitle}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              )
+            })}
 
-            <div className="absolute right-0 bottom-32 w-52 h-36 card bg-surface-primary/90 backdrop-blur-sm p-4 animate-float" style={{ animationDelay: '1.5s' }}>
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-apple-blue-600 to-accent-purple rounded-apple-sm"></div>
-                <div>
-                  <h3 className="text-footnote font-semibold text-text-primary">Professional Installation</h3>
-                  <p className="text-footnote text-text-secondary">Expert Service</p>
-                </div>
-              </div>
+            {/* Card indicators */}
+            <div className="absolute bottom-16 right-8 flex space-x-2">
+              {serviceCards.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    index === currentCardIndex 
+                      ? 'bg-secondary-gold scale-125 shadow-md' 
+                      : 'bg-apple-gray-300 hover:bg-apple-gray-400 hover:scale-110'
+                  }`}
+                  onClick={() => setCurrentCardIndex(index)}
+                  role="button"
+                  tabIndex={0}
+                />
+              ))}
             </div>
           </div>
         </div>

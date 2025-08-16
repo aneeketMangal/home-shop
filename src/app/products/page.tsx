@@ -271,12 +271,6 @@ export default function Products() {
             >
               Get Free Consultation
             </Link>
-            <Link
-              href="/services"
-              className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary-navy transition-colors"
-            >
-              Our Services
-            </Link>
           </div>
         </div>
       </section>
